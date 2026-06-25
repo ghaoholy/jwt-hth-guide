@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>九游 – 稳定、轻量的页面说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fafafa;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      line-height: 1.7;
+      color: #1f1f1f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.5rem 1rem;
+    }
+
+    .page {
+      max-width: 720px;
+      width: 100%;
+    }
+
+    /* 主视觉 – 卡片式 hero */
+    .hero-card {
+      background-color: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03), 0 6px 24px rgba(0, 0, 0, 0.02);
+      padding: 2.8rem 2.4rem;
+      margin-bottom: 2.8rem;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .hero-card:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), 0 10px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: #eef1f5;
+      color: #2c3e4f;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      padding: 0.25rem 0.9rem;
+      border-radius: 40px;
+      margin-bottom: 1.2rem;
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 550;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      color: #111;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text {
+      font-size: 1rem;
+      color: #3e4a55;
+      margin-bottom: 1.8rem;
+      max-width: 90%;
+    }
+
+    .intro-link-sentence {
+      font-size: 0.95rem;
+      color: #3e4a55;
+      background-color: #f4f6f9;
+      padding: 0.7rem 1.4rem;
+      border-radius: 40px;
+      display: inline-block;
+      line-height: 1.5;
+    }
+
+    .intro-link-sentence a {
+      color: #1f3a5f;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      font-weight: 500;
+    }
+
+    .intro-link-sentence a:hover {
+      color: #0b1e33;
+    }
+
+    /* 卡片通用设计 */
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.02), 0 4px 14px rgba(0, 0, 0, 0.02);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.03);
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      font-weight: 540;
+      color: #1b2a3a;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.9rem;
+      border-left: 3px solid #b8c9dd;
+      padding-left: 0.9rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #2f3b47;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 0.9rem;
+      margin-top: 0.4rem;
+    }
+
+    .tag {
+      background-color: #eef2f7;
+      color: #1f3447;
+      font-size: 0.85rem;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      letter-spacing: 0.2px;
+    }
+
+    /* 自然链接段落 – 融入句子 */
+    .narrative-block {
+      background-color: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.02), 0 4px 14px rgba(0, 0, 0, 0.02);
+    }
+
+    .narrative-block p {
+      font-size: 0.95rem;
+      color: #2f3b47;
+      margin-bottom: 1rem;
+    }
+
+    .narrative-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .narrative-block a {
+      color: #1f3a5f;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      font-weight: 500;
+    }
+
+    .narrative-block a:hover {
+      color: #0b1e33;
+    }
+
+    /* FAQ 摘要 */
+    .faq-mini {
+      background-color: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2.8rem;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.02), 0 4px 14px rgba(0, 0, 0, 0.02);
+    }
+
+    .faq-mini h2 {
+      font-size: 1.15rem;
+      font-weight: 540;
+      color: #1b2a3a;
+      margin-bottom: 1.2rem;
+      border-left: 3px solid #b8c9dd;
+      padding-left: 0.9rem;
+    }
+
+    .faq-item {
+      margin-bottom: 0.9rem;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 550;
+      font-size: 0.95rem;
+      color: #1f2f3f;
+      margin-bottom: 0.15rem;
+    }
+
+    .faq-item span {
+      font-size: 0.9rem;
+      color: #42505e;
+      line-height: 1.5;
+    }
+
+    .faq-item:last-child {
+      margin-bottom: 0;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e6eaf0;
+      margin: 0.8rem 0 1rem 0;
+    }
+
+    .footer-note {
+      font-size: 0.78rem;
+      color: #7b8a99;
+      text-align: center;
+      margin-top: 1.2rem;
+      letter-spacing: 0.2px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 540px) {
+      body {
+        padding: 1.5rem 0.8rem;
+      }
+      .hero-card {
+        padding: 2rem 1.4rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      .card {
+        padding: 1.4rem 1.2rem;
+      }
+      .narrative-block {
+        padding: 1.4rem 1.2rem;
+      }
+      .faq-mini {
+        padding: 1.4rem 1.2rem;
+      }
+      .intro-link-sentence {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero-text {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 主视觉卡片 -->
+  <div class="hero-card">
+    <div class="badge">稳定入口 · 简要说明</div>
+    <h1>九游，一个轻量的页面</h1>
+    <p class="hero-text">
+      不追求繁复的功能叠加，而是提供一种更专注的浏览方式。你可以在其中找到简洁的交互与清晰的指引。
+    </p>
+    <div class="intro-link-sentence">
+      想了解更多，可以看看 <a href="https://h5-ninegame.com">九游</a> 本身的结构与内容。
+    </div>
+  </div>
+
+  <!-- 用途卡片 -->
+  <div class="card-grid">
+    <div class="card">
+      <h2>适合的场景</h2>
+      <p>如果你需要快速获取信息，或是在移动端保持清爽的浏览节奏，这个页面会是一个合适的选择。没有多余的弹窗或强推送，页面本身保持干净。</p>
+      <div class="tag-list">
+        <span class="tag">移动阅读</span>
+        <span class="tag">信息预览</span>
+        <span class="tag">低干扰</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>内容特点</h2>
+      <p>结构以卡片和段落为主，字号适中，对比柔和。重点内容通过视觉层级来区分，而非密集的高亮或闪烁。整体偏向于一种平实的叙述感。</p>
+      <div class="tag-list">
+        <span class="tag">卡片布局</span>
+        <span class="tag">低饱和度</span>
+        <span class="tag">清晰层级</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>适合哪些人</h2>
+      <p>适合偏好静态页面、不希望被打扰的用户。也适合只是想简单了解某一主题、不愿花费太多精力在界面适应上的访客。</p>
+      <div class="tag-list">
+        <span class="tag">轻度用户</span>
+        <span class="tag">信息浏览者</span>
+        <span class="tag">极简偏好</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 自然链接段落（融入句子） -->
+  <div class="narrative-block">
+    <p>
+      偶尔会有人问起，这个页面到底提供了什么。其实它更像一个稳定的入口：没有繁杂的跳转，也不刻意引导行为。
+      如果你对这类轻巧的呈现方式感兴趣，<a href="https://h5-ninegame.com">九游</a> 本身就是一个例子——你可以直接感受它的节奏。
+    </p>
+    <p>
+      页面中每一个区块都经过考虑，但又不显得用力。信息的呈现顺序、间距、甚至字重都试图为阅读服务，而不是为装饰。
+    </p>
+  </div>
+
+  <!-- FAQ 摘要（非完整FAQ，仅摘要风格） -->
+  <div class="faq-mini">
+    <h2>几个常见想法</h2>
+    <div class="faq-item">
+      <strong>这个页面适合用作什么？</strong>
+      <span>可以当作一个轻量的介绍页或导航起点，尤其适合在移动端快速查阅。</span>
+    </div>
+    <hr>
+    <div class="faq-item">
+      <strong>内容会频繁更新吗？</strong>
+      <span>不一定。页面本身保持相对稳定的结构，内容更新根据实际需要而定，不会为了更新而更新。</span>
+    </div>
+    <hr>
+    <div class="faq-item">
+      <strong>为什么选择这种极简风格？</strong>
+      <span>为了减少视觉疲劳，让注意力更自然地落在文字和信息本身，而不是界面元素上。</span>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    — 页面描述 · 自然叙述 —
+  </div>
+
+</div>
+</body>
+</html>
